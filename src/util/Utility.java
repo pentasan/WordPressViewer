@@ -30,12 +30,10 @@ public class Utility {
 		return ret;
 	}
 
-	public static void saveTextFile(String fileName, String content)
-			throws IOException {
+	public static void saveTextFile(String fileName, String content) throws IOException {
 		BufferedWriter bw = null;
 		try {
-			OutputStreamWriter osw = new OutputStreamWriter(
-					new FileOutputStream(new File(fileName)), "UTF-8");
+			OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream(new File(fileName)), "UTF-8");
 			bw = new BufferedWriter(osw);
 			bw.write(content);
 		} catch (IOException e) {
@@ -66,8 +64,7 @@ public class Utility {
 	}
 
 	public static void showMessageDialog(Component parent, String message) {
-		JOptionPane.showMessageDialog(parent, message, "Information",
-				JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(parent, message, "Information", JOptionPane.INFORMATION_MESSAGE);
 	}
 
 	public static boolean isEmptyString(String text) {
@@ -98,15 +95,11 @@ public class Utility {
 		try {
 			URL url = new URL(urlText);
 			if (urlText.toLowerCase().startsWith("https")) {
-				HttpsURLConnection con = (HttpsURLConnection) url
-						.openConnection();
-				br = new BufferedReader(new InputStreamReader(
-						con.getInputStream(), "UTF-8"));
+				HttpsURLConnection con = (HttpsURLConnection) url.openConnection();
+				br = new BufferedReader(new InputStreamReader(con.getInputStream(), "UTF-8"));
 			} else {
-				HttpURLConnection con = (HttpURLConnection) url
-						.openConnection();
-				br = new BufferedReader(new InputStreamReader(
-						con.getInputStream(), "UTF-8"));
+				HttpURLConnection con = (HttpURLConnection) url.openConnection();
+				br = new BufferedReader(new InputStreamReader(con.getInputStream(), "UTF-8"));
 			}
 			String input;
 
@@ -181,8 +174,7 @@ public class Utility {
 		return out.toByteArray();
 	}
 
-	public static String loadTextFileContent(File file, String encoding)
-			throws Exception {
+	public static String loadTextFileContent(File file, String encoding) throws Exception {
 		FileInputStream in = null;
 		byte b[] = new byte[1024];
 		ByteArrayOutputStream out = new ByteArrayOutputStream();

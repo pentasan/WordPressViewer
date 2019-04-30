@@ -29,16 +29,14 @@ import javax.swing.table.TableRowSorter;
 
 import util.Utility;
 
-public class WPJSONUnitPanel extends JPanel implements MouseListener,
-		KeyListener, ActionListener {
+public class WPJSONUnitPanel extends JPanel implements MouseListener, KeyListener, ActionListener {
 
 	private static final long serialVersionUID = 4304129247566444150L;
 
 	private static final int MIN_COLUNN_WIDTH = 100;
 	private static final int MAX_COLUNN_WIDTH = 500;
 
-	private static final String ADD_NEW_ITEM_NA_LIST[] = { "types", "users",
-			"categories", "tags", "media" };
+	private static final String ADD_NEW_ITEM_NA_LIST[] = { "types", "users", "categories", "tags", "media" };
 
 	private JFrame _parent;
 	private List<WPJSONUnit> _list;
@@ -55,8 +53,7 @@ public class WPJSONUnitPanel extends JPanel implements MouseListener,
 
 	private JMenuItem _editMenuItem;
 
-	public WPJSONUnitPanel(JFrame parent, List<WPJSONUnit> list, String url,
-			String restBase) {
+	public WPJSONUnitPanel(JFrame parent, List<WPJSONUnit> list, String url, String restBase) {
 		_parent = parent;
 		_list = list;
 		_url = url;
@@ -165,9 +162,8 @@ public class WPJSONUnitPanel extends JPanel implements MouseListener,
 			for (int i = 0; i < count; i++) {
 				list.add(i);
 			}
-			RowFilter<WPJSONUnitTableModel, Object> rowFilter = RowFilter
-					.regexFilter(_textField.getText().trim(),
-							Utility.getIntArrayFromIntegerList(list));
+			RowFilter<WPJSONUnitTableModel, Object> rowFilter = RowFilter.regexFilter(_textField.getText().trim(),
+					Utility.getIntArrayFromIntegerList(list));
 			_sorter.setRowFilter(rowFilter);
 		} catch (java.util.regex.PatternSyntaxException e) {
 			return;

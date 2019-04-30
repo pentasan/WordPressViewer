@@ -27,8 +27,7 @@ public class WordPressViewer extends JFrame implements ActionListener {
 	private static final int FRAME_WIDTH = 1000;
 	private static final int FRAME_HEIGHT = 400;
 
-	private static final String DEFAULT_TYPE_LIST[] = { "posts", "pages",
-			"media", "blocks" };
+	private static final String DEFAULT_TYPE_LIST[] = { "posts", "pages", "media", "blocks" };
 
 	private JTextField _urlTextField;
 	private JButton _loadButton;
@@ -41,8 +40,7 @@ public class WordPressViewer extends JFrame implements ActionListener {
 
 	public WordPressViewer() {
 		setTitle("Word Press Viewer");
-		setIconImage(ImageProvider.getInstance()
-				.getImage(ImageProvider.ICON_WP).getImage());
+		setIconImage(ImageProvider.getInstance().getImage(ImageProvider.ICON_WP).getImage());
 
 		addComponents();
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -128,8 +126,7 @@ public class WordPressViewer extends JFrame implements ActionListener {
 			_url = url;
 		}
 
-		private String getWordPressJSONTextFromURL(String url)
-				throws IOException {
+		private String getWordPressJSONTextFromURL(String url) throws IOException {
 			return Utility.getHTTPContent(url);
 		}
 
@@ -153,14 +150,12 @@ public class WordPressViewer extends JFrame implements ActionListener {
 			return false;
 		}
 
-		private JPanel getAllWPJSONUnitPanelFromURL(String inputURL,
-				String restBase) {
+		private JPanel getAllWPJSONUnitPanelFromURL(String inputURL, String restBase) {
 			try {
 				List<WPJSONUnit> allList = new ArrayList<WPJSONUnit>();
 				int page = 1;
 				while (true) {
-					String url = getRestBaseURL(inputURL, restBase) + "?page="
-							+ page + "&per_page=" + PAGE_MAX_COUNT;
+					String url = getRestBaseURL(inputURL, restBase) + "?page=" + page + "&per_page=" + PAGE_MAX_COUNT;
 					System.out.println("url:" + url);
 					setFooterLabelText("Loading " + url + " ...");
 					String text = getWordPressJSONTextFromURL(url);
@@ -181,8 +176,7 @@ public class WordPressViewer extends JFrame implements ActionListener {
 						_typeList.add(text);
 					}
 				}
-				return new WPJSONUnitPanel(WordPressViewer.this, allList,
-						inputURL, restBase);
+				return new WPJSONUnitPanel(WordPressViewer.this, allList, inputURL, restBase);
 			} catch (Exception e) {
 				return new ExceptionMessagePanel(e);
 			}
@@ -193,16 +187,13 @@ public class WordPressViewer extends JFrame implements ActionListener {
 				_tabbedPane.removeAll();
 				_tabbedPane.validate();
 
-				String typeList[] = { "types", "users", "categories", "tags",
-						"posts", "pages", "media" };
+				String typeList[] = { "types", "users", "categories", "tags", "posts", "pages", "media" };
 				for (String type : typeList) {
-					_tabbedPane.addTab(type,
-							getAllWPJSONUnitPanelFromURL(_url, type));
+					_tabbedPane.addTab(type, getAllWPJSONUnitPanelFromURL(_url, type));
 				}
 
 				for (String restBase : _typeList) {
-					_tabbedPane.addTab(restBase,
-							getAllWPJSONUnitPanelFromURL(_url, restBase));
+					_tabbedPane.addTab(restBase, getAllWPJSONUnitPanelFromURL(_url, restBase));
 				}
 
 				setFooterLabelText("Load finished.");

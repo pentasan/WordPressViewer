@@ -43,12 +43,10 @@ public class EditContentDialog extends JDialog implements ActionListener {
 	private JTextArea _contentTextArea;
 	private JButton _saveButton;
 
-	public EditContentDialog(JFrame parent, String url, String restBase,
-			WPJSONUnit unit) {
+	public EditContentDialog(JFrame parent, String url, String restBase, WPJSONUnit unit) {
 		super(parent);
 		setTitle(getDialogTitleText(unit));
-		setIconImage(ImageProvider.getInstance()
-				.getImage(ImageProvider.ICON_WP).getImage());
+		setIconImage(ImageProvider.getInstance().getImage(ImageProvider.ICON_WP).getImage());
 
 		_url = url;
 		_restBase = restBase;
@@ -117,8 +115,7 @@ public class EditContentDialog extends JDialog implements ActionListener {
 		getContentPane().add(getFooterPanel(), BorderLayout.SOUTH);
 	}
 
-	private void sendPost(String url, String title, String content)
-			throws Exception {
+	private void sendPost(String url, String title, String content) throws Exception {
 
 		URL obj = new URL(url);
 		HttpURLConnection con = null;
@@ -129,9 +126,7 @@ public class EditContentDialog extends JDialog implements ActionListener {
 		}
 
 		String usernameColonPassword = "yoko:0u5m rLN0 9njO aBRj UnOk fvFT";
-		String basicAuthPayload = "Basic "
-				+ Base64.getEncoder().encodeToString(
-						usernameColonPassword.getBytes());
+		String basicAuthPayload = "Basic " + Base64.getEncoder().encodeToString(usernameColonPassword.getBytes());
 
 		// add reuqest header
 		con.setRequestMethod("POST");
@@ -141,9 +136,8 @@ public class EditContentDialog extends JDialog implements ActionListener {
 
 		// String urlParameters = "title="
 		// + URLEncoder.encode("‚ ‚¢‚¤“ú–{Œê‚©‚«", "UTF-8");
-		String urlParameters = "title=" + URLEncoder.encode(title, "UTF-8")
-				+ "&content=" + URLEncoder.encode(content, "UTF-8")
-				+ "&status=publish";
+		String urlParameters = "title=" + URLEncoder.encode(title, "UTF-8") + "&content="
+				+ URLEncoder.encode(content, "UTF-8") + "&status=publish";
 
 		// Send post request
 		con.setDoOutput(true);
@@ -157,8 +151,7 @@ public class EditContentDialog extends JDialog implements ActionListener {
 		System.out.println("Post parameters : " + urlParameters);
 		System.out.println("Response Code : " + responseCode);
 
-		BufferedReader in = new BufferedReader(new InputStreamReader(
-				con.getInputStream()));
+		BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
 		String inputLine;
 		StringBuffer response = new StringBuffer();
 

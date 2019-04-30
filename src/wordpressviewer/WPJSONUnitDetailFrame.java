@@ -31,8 +31,7 @@ public class WPJSONUnitDetailFrame extends JFrame implements ActionListener {
 
 	public WPJSONUnitDetailFrame(JFrame parent, String restBase, WPJSONUnit unit) {
 		setTitle("Content detail, " + restBase + " " + unit.getId());
-		setIconImage(ImageProvider.getInstance()
-				.getImage(ImageProvider.ICON_WP).getImage());
+		setIconImage(ImageProvider.getInstance().getImage(ImageProvider.ICON_WP).getImage());
 
 		_unit = unit;
 

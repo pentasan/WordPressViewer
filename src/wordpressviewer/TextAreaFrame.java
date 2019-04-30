@@ -19,8 +19,7 @@ public class TextAreaFrame extends JFrame {
 
 	public TextAreaFrame(JFrame parent, String text) {
 		setTitle("Detail");
-		setIconImage(ImageProvider.getInstance()
-				.getImage(ImageProvider.ICON_WP).getImage());
+		setIconImage(ImageProvider.getInstance().getImage(ImageProvider.ICON_WP).getImage());
 
 		_text = text;
 

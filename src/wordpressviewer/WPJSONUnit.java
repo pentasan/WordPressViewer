@@ -69,8 +69,7 @@ public class WPJSONUnit {
 		}
 	}
 
-	private static WPJSONUnit parseJsonNode(String name, String nameValue,
-			JsonNode node) {
+	private static WPJSONUnit parseJsonNode(String name, String nameValue, JsonNode node) {
 		List<NameValuePair> nameValuePairList = new ArrayList<NameValuePair>();
 		if (name != null && nameValue != null) {
 			nameValuePairList.add(new NameValuePair(name, nameValue));
@@ -87,8 +86,7 @@ public class WPJSONUnit {
 		return new WPJSONUnit(nameValuePairList);
 	}
 
-	public static List<WPJSONUnit> parseJSONText(String text)
-			throws IOException {
+	public static List<WPJSONUnit> parseJSONText(String text) throws IOException {
 		List<WPJSONUnit> ret = new ArrayList<WPJSONUnit>();
 		ObjectMapper mapper = new ObjectMapper();
 		JsonNode treeNode = mapper.readTree(text);
